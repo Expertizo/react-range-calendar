@@ -19,12 +19,48 @@ class Calendar extends Component {
       startWith: "Wed",
       activeView: "default",
       fixRange: [],
-      activeMouseEnter: false
+      activeMouseEnter: false,
+      invalid: true
     };
   }
 
   componentDidMount() {
-    const { date, step, startWith, startWithDates, only, type } = this.props;
+    const {
+      date,
+      step,
+      startWith,
+      startWithDates,
+      only,
+      type,
+      visible,
+      onDayClick
+    } = this.props;
+    let invalid = false;
+    if (!startWithDates) {
+      console.error(`Prop "startWithDates" is Required`);
+      invalid = true;
+    }
+    if (visible === undefined) {
+      console.error(`Prop "visible" is Required`);
+      invalid = true;
+    }
+    if (type === "range" && step === undefined) {
+      console.error(`Prop "step" is Required`);
+      invalid = true;
+    }
+    if (type === "range" && startWith === undefined) {
+      console.error(`Prop "startWith" is Required`);
+      invalid = true;
+    }
+    if (!onDayClick) {
+      console.error(`Prop "onDayClick" is Required`);
+      invalid = true;
+    }
+    console.log("TCL: componentDidMount -> invalid", invalid);
+    this.setState({ invalid: invalid });
+    if (invalid) {
+      return false;
+    }
     const dateInMoment = moment(date);
     const month = dateInMoment.format("YYYY-MMM"),
       year = dateInMoment.format("YYYY"),
@@ -53,7 +89,14 @@ class Calendar extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
-      const { date, step, startWith, startWithDates, type } = this.props;
+      const {
+        visible,
+        date,
+        step,
+        startWith,
+        startWithDates,
+        type
+      } = this.props;
       const dateInMoment = moment(startWithDates[0]);
       const month = dateInMoment.format("YYYY-MMM"),
         year = dateInMoment.format("YYYY"),
@@ -269,8 +312,11 @@ class Calendar extends Component {
     }
   };
   render() {
-    const { visible, only, type } = this.props;
-    if (!visible) return false;
+    const { visible, only, type, startWithDates } = this.props;
+    console.log("TCL: render -> this.state.invalid", this.state.invalid);
+    if (this.state.invalid) {
+      return false;
+    }
     const {
       activeDateIndex: activeDateArray,
       month: monthObj,
