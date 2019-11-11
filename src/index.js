@@ -119,7 +119,7 @@ class Calendar extends Component {
     const { type } = this.props;
     const activeDates = this.getMonths(month, year);
     let selectedDate;
-    if (type === "single" || type === "fix-range") {
+    if (type === "single" || type === "free-range") {
       selectedDate = dateInMoment.clone();
     } else {
       selectedDate = dateInMoment.clone().day(startWith);
@@ -157,7 +157,7 @@ class Calendar extends Component {
         // activeDateIndex[1].clone()
       );
       this.setState({ activeDateIndex });
-    } else if (type === "fix-range") {
+    } else if (type === "free-range") {
       if (fixRange.length) {
         const activeDateArray = [fixRange[0], activeDate.clone()];
         this.setState(pre => ({
@@ -283,7 +283,11 @@ class Calendar extends Component {
     const fontColor = this.props.hoverFontColor || "#ffffff";
     e.currentTarget.style.backgroundColor = baseColor;
     e.currentTarget.style.color = fontColor;
-    if (this.props.type === "fix-range" && this.state.fixRange.length && date) {
+    if (
+      this.props.type === "free-range" &&
+      this.state.fixRange.length &&
+      date
+    ) {
       this.setState({ activeMouseEnter: date });
     }
   };
@@ -316,7 +320,7 @@ class Calendar extends Component {
       activeMouseEnter
     } = this.state;
     let activeDateIndex;
-    if (type === "fix-range" && fixRange.length && activeMouseEnter) {
+    if (type === "free-range" && fixRange.length && activeMouseEnter) {
       //
       activeDateIndex = [fixRange[0], activeMouseEnter];
     } else {
@@ -550,7 +554,7 @@ Calendar.propTypes = {
   disabledColor: PropTypes.string,
   weekDaysColor: PropTypes.string,
   weekendsDaysColor: PropTypes.string,
-  type: PropTypes.oneOf(["fix-range", "single", "range"]),
+  type: PropTypes.oneOf(["free-range", "single", "range"]),
   height: PropTypes.number,
   width: PropTypes.number
 };

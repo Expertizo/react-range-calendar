@@ -32,7 +32,7 @@ export default class App extends Component {
             // disabledColor="#b9b9b9"
             // weekDaysColor="#ff7b7b"
             // weekendsDaysColor="#ffbaba"
-            type="range"
+            type="free-range"
           />
         </div>
       </div>
