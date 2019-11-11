@@ -55,10 +55,10 @@ class Example extends Component {
 |    type\*    | Type of calendar `["free-range", "single", "range"]` |   `"range"`   |            `"free-range"`             |
 |  visible\*   |                visibility of calendar                |    `false`    |                `true`                 |
 | dateRange\*  |                   Array Of Date's                    |    `null`     | `[new Date(), new Date("21/5/2019")]` |
-| onDayClick\* |                     On Day Click                     |               |      ```(minDate, maxDate) => {       |
+| onDayClick\* |                     On Day Click                     |               |       `(minDate, maxDate) => {        |
 
               this.setState({ startWithDates: [minDate, maxDate] });
-            }``` |
+            }` |
 
 | baseColor | Base Color | `` | `red` | | fontColor | Font Color | `` | `white` |
 | hoverBackgroundColor | Hover Background Color | `` | `red` | | hoverFontColor | Hover Font Color | `` | `white` |
