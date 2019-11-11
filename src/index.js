@@ -28,16 +28,16 @@ class Calendar extends Component {
     const {
       date,
       step,
-      startWith,
-      startWithDates,
+      startWithDay,
+      dateRange,
       only,
       type,
       visible,
       onDayClick
     } = this.props;
     let invalid = false;
-    if (!startWithDates) {
-      console.error(`Prop "startWithDates" is Required`);
+    if (!dateRange) {
+      console.error(`Prop "dateRange" is Required`);
       invalid = true;
     }
     if (visible === undefined) {
@@ -48,15 +48,14 @@ class Calendar extends Component {
       console.error(`Prop "step" is Required`);
       invalid = true;
     }
-    if (type === "range" && startWith === undefined) {
-      console.error(`Prop "startWith" is Required`);
+    if (type === "range" && startWithDay === undefined) {
+      console.error(`Prop "startWithDay" is Required`);
       invalid = true;
     }
     if (!onDayClick) {
       console.error(`Prop "onDayClick" is Required`);
       invalid = true;
     }
-    console.log("TCL: componentDidMount -> invalid", invalid);
     this.setState({ invalid: invalid });
     if (invalid) {
       return false;
@@ -72,16 +71,14 @@ class Calendar extends Component {
         dateInMoment.clone().endOf("days")
       ];
     } else {
-      activeDateIndex = startWithDates.length
-        ? startWithDates.map(d => moment(d))
-        : [];
+      activeDateIndex = dateRange.length ? dateRange.map(d => moment(d)) : [];
     }
     this.setState({
       month,
       year,
       date: day,
       step,
-      startWith,
+      startWith: startWithDay,
       activeDateIndex,
       activeView: only || "default"
     });
@@ -89,15 +86,8 @@ class Calendar extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
-      const {
-        visible,
-        date,
-        step,
-        startWith,
-        startWithDates,
-        type
-      } = this.props;
-      const dateInMoment = moment(startWithDates[0]);
+      const { visible, date, step, startWithDay, dateRange, type } = this.props;
+      const dateInMoment = moment(dateRange[0]);
       const month = dateInMoment.format("YYYY-MMM"),
         year = dateInMoment.format("YYYY"),
         day = dateInMoment.format("D");
@@ -108,16 +98,14 @@ class Calendar extends Component {
           dateInMoment.clone().endOf("days")
         ];
       } else {
-        activeDateIndex = startWithDates.length
-          ? startWithDates.map(d => moment(d))
-          : [];
+        activeDateIndex = dateRange.length ? dateRange.map(d => moment(d)) : [];
       }
       this.setState({
         month,
         year,
         date: day,
         step,
-        startWith,
+        startWith: startWithDay,
         activeDateIndex
       });
     }
@@ -312,8 +300,10 @@ class Calendar extends Component {
     }
   };
   render() {
-    const { visible, only, type, startWithDates } = this.props;
-    console.log("TCL: render -> this.state.invalid", this.state.invalid);
+    const { visible, only, type, dateRange } = this.props;
+    if (!visible) {
+      return false;
+    }
     if (this.state.invalid) {
       return false;
     }
@@ -548,8 +538,8 @@ Calendar.propTypes = {
       return new Error("Max Step 30 is allowed");
     }
   },
-  startWith: PropTypes.string,
-  startWithDates: PropTypes.arrayOf(PropTypes.object),
+  startWithDay: PropTypes.string,
+  dateRange: PropTypes.arrayOf(PropTypes.object),
   visible: PropTypes.bool,
   onDayClick: PropTypes.func,
   only: PropTypes.string,
