@@ -4,9 +4,11 @@
 
 [![NPM](https://img.shields.io/npm/v/react-range-calendar.svg)](https://www.npmjs.com/package/react-range-calendar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-|                         Solarized dark                          | Solarized Ocean |      Solarized Ocean      |
-| :-------------------------------------------------------------: | :-------------: | :-----------------------: |
-| ![](https://media.giphy.com/media/j2w0ENwMrjtwdsx4Du/giphy.gif) |                 | ![](https://...Ocean.png) |
+|                           free-range                            |                              range                              |                             single                              |
+| :-------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+| ![](https://media.giphy.com/media/j2w0ENwMrjtwdsx4Du/giphy.gif) | ![](https://media.giphy.com/media/QXgd2n6ZOt6xvTeuJh/giphy.gif) | ![](https://media.giphy.com/media/QYMYbEMXaukCROx7gQ/giphy.gif) |
+
+![](https://media.giphy.com/media/U3VBtzauLwfaXrxmcb/giphy.gif)
 
 ## Install
 
@@ -22,54 +24,73 @@ yarn add react-range-calendar
 
 ## Usage
 
+![](https://i.imgur.com/IiEWSrS.png)
+
 ```jsx
 import React, { Component } from "react";
-
 import Calendar from "react-range-calendar";
 
-class Example extends Component {
+export default class App extends Component {
   state = {
     visible: true,
-    startWithDates: [new Date(), new Date("21/5/2019")]
+    dateRange: [new Date(), new Date("21/5/2019")]
   };
+
   render() {
-    const { visible, startWithDates } = this.state;
-    const step = 7;
-    const startWith = "Wed";
+    const { visible, dateRange } = this.state;
+
+    const steps = 7;
+    const startWithDay = "Wed";
+
     return (
       <Calendar
         visible={visible}
-        step={step}
-        startWithDay={startWith}
-        dateRange={startWithDates}
+        steps={steps}
+        startWithDay={startWithDay}
+        dateRange={dateRange}
         onDayClick={(minDate, maxDate) => {
-          this.setState({ startWithDates: [minDate, maxDate] });
+          this.setState({ dateRange: [minDate, maxDate] });
         }}
-        type="free-range"
+        type="range"
       />
     );
   }
 }
 ```
 
-## props
+## Props
 
-|      Prop name       |                     Description                      |                      Default Value                      |            Example values             |
-| :------------------: | :--------------------------------------------------: | :-----------------------------------------------------: | :-----------------------------------: |
-|        type\*        | Type of calendar `["free-range", "single", "range"]` |                        `"range"`                        |            `"free-range"`             |
-|      visible\*       |                visibility of calendar                |                         `false`                         |                `true`                 |
-|     dateRange\*      |                   Array Of Date's                    |                         `null`                          | `[new Date(), new Date("21/5/2019")]` |
-|     onDayClick\*     |                     On Day Click                     |                                                         |        `(minDate,maxDate)=>{}`        |
-|      baseColor       |                      Base Color                      |       `` | `red` | | fontColor | Font Color | ``        |                `white`                |
-| hoverBackgroundColor |                Hover Background Color                |  `` | `red` | | hoverFontColor | Hover Font Color | ``  |                `white`                |
-|    disabledColor     |                    Disabled Color                    | `` | `#b9b9b9` | | weekDaysColor | Week Days Color | `` |               `#ff7b7b`               |
-|  weekendsDaysColor   |                   Week Ends Color                    |                     `` | `#ffbaba`                      |
+All \* props are Required.
+
+|      Prop name       |                     Description                      | Default Value |            Example values             |
+| :------------------: | :--------------------------------------------------: | :-----------: | :-----------------------------------: |
+|        type\*        | Type of calendar `["free-range", "single", "range"]` |   `"range"`   |            `"free-range"`             |
+|      visible\*       |                Visibility of calendar                |    `false`    |                `true`                 |
+|     dateRange\*      |                   Array of date's                    |     `[]`      | `[new Date(), new Date("21/5/2019")]` |
+|     onDayClick\*     |                     On day click                     |               |        `(minDate,maxDate)=>{}`        |
+|      baseColor       |                      Base color                      |   `#007bff`   |                 `red`                 |  | fontColor | Font Color | `` | `white` |
+| hoverBackgroundColor |                Hover background color                |   `#007bff`   |                 `red`                 |  | hoverFontColor | Hover Font Color | `` | `white` |
+|    disabledColor     |                    Disabled color                    |   `#add8e6`   |               `#b9b9b9`               |  | weekDaysColor | Week Days Color | `` | `#ff7b7b` |
+|  weekendsDaysColor   |                   Week ends color                    |    `grey`     |               `#ffbaba`               |
 
 ## Types
 
 1.  ### free-range
 
-    Users can select date freely without max,min & steps
+    Users can select date freely
+
+    ### Example
+
+    ```jsx
+    <Calendar
+      visible={visible}
+      dateRange={dateRange}
+      onDayClick={(minDate, maxDate) => {
+        this.setState({ dateRange: [minDate, maxDate] });
+      }}
+      type="free-range"
+    />
+    ```
 
     #### Demo
 
@@ -77,7 +98,22 @@ class Example extends Component {
 
 2.  ### range
 
-    When User click date it will find nearest provide day and add steps from that then return
+    On user date selection, It will find nearest provided day (`startWithDay`) and add provided `steps` from that day
+
+    ### Example
+
+    ```jsx
+    <Calendar
+      visible={visible}
+      steps={steps}
+      startWithDay={startWithDay}
+      dateRange={dateRange}
+      onDayClick={(minDate, maxDate) => {
+        this.setState({ dateRange: [minDate, maxDate] });
+      }}
+      type="range"
+    />
+    ```
 
     #### Demo
 
@@ -87,16 +123,41 @@ class Example extends Component {
 
     |   Prop name    |                       Description                        | Default Value | Example values |
     | :------------: | :------------------------------------------------------: | :-----------: | :------------: |
-    |     step\*     |                  Steps from start date                   |      `7`      |      `7`       |
-    | startWithDay\* | starting day of nearest selected day then it will update |     `Wed`     |     `Wed`      |
+    |    steps\*     |                  Steps from start date                   |      `7`      |      `7`       |
+    | startWithDay\* | Starting day of nearest selected day then it will update |     `Wed`     |     `Wed`      |
 
 3.  ### single
 
-    For Single Date Select
+    For single date select
+
+    #### Example
+
+    ```jsx
+    <Calendar
+      visible={visible}
+      dateRange={dateRange} // date should be in array with first index of active date i.e [new Date()]
+      onDayClick={date => {
+        this.setState({ dateRange: [date] });
+      }}
+      type="single"
+    />
+    ```
 
     #### Demo
 
     ![](https://media.giphy.com/media/QYMYbEMXaukCROx7gQ/giphy.gif)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/hamsahmedansari"><img src="https://avatars1.githubusercontent.com/u/35776235?s=460&v=4" width="100px;" alt="Hams Ahmed Ansari"/><br /><sub><b>Hams Ahmed Ansari</b></sub></a><br /><a href="#" title="Infrastructure  (Hosting, Build-Tools,Complete Setup, etc)">🚇</a> <a href="#" title="Code">💻</a></td>
+  </tr>
+</table>
 
 ## License
 
