@@ -7,7 +7,7 @@
 ### Demo & Features
 
 <p align="center">
-  <img width="460" height="300" src="https://media.giphy.com/media/KZvNr253b3D7F37zOd/giphy.gif">
+  <img src="https://media.giphy.com/media/KZvNr253b3D7F37zOd/giphy.gif">
 </p>
 
 |                              range                              |                           free-range                            |                             single                              |
