@@ -7,12 +7,12 @@
 ### Demo & Features
 
 <p align="center">
-  <img width="460" height="300" src="https://media.giphy.com/media/U3VBtzauLwfaXrxmcb/giphy.gif">
+  <img width="460" height="300" src="https://media.giphy.com/media/KZvNr253b3D7F37zOd/giphy.gif">
 </p>
 
-|                           range                            |                              free-range                              |                             single                              |
+|                              range                              |                           free-range                            |                             single                              |
 | :-------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
-| ![](https://media.giphy.com/media/QXgd2n6ZOt6xvTeuJh/giphy.gif) | ![](https://media.giphy.com/media/j2w0ENwMrjtwdsx4Du/giphy.gif) | ![](https://media.giphy.com/media/QYMYbEMXaukCROx7gQ/giphy.gif) |
+| ![](https://media.giphy.com/media/dWei8AyrWphnKS5RwC/giphy.gif) | ![](https://media.giphy.com/media/IeLEjnwuzVR7yMVNac/giphy.gif) | ![](https://media.giphy.com/media/RfBbDclOhU9FU3uAif/giphy.gif) |
 
 ## Install
 
@@ -63,16 +63,16 @@ export default class App extends Component {
 
 Asterisk (\*) props are Required.
 
-|      Prop name       |                     Description                      | Default Value |            Example values             |
-| :------------------: | :--------------------------------------------------: | :-----------: | :-----------------------------------: |
+|      Prop name       |                      Description                      | Default Value |            Example values             |
+| :------------------: | :---------------------------------------------------: | :-----------: | :-----------------------------------: |
 |        type\*        | Types of calendar `["free-range", "single", "range"]` |   `"range"`   |            `"free-range"`             |
-|      visible\*       |                Visibility of calendar                |    `false`    |                `true`                 |
-|     dateRange\*      |                   Array of starting and ending dates                    |     `[]`      | `[new Date(), new Date("21/5/2019")]` |
-|     onDateClick\*     |                     On clicking any date                     |               |        `(minDate, maxDate)=>{}`       |
-|      baseColor       |                      Base color                      |   `#007bff`   |                 `red`                 |  | fontColor | Font Color | `` | `white` |
-| hoverBackgroundColor |                Hover background color                |   `#007bff`   |                 `red`                 |  | hoverFontColor | Hover Font Color | `` | `white` |
-|    disabledColor     |                    Disabled color                    |   `#add8e6`   |               `#b9b9b9`               |  | weekDaysColor | Week Days Color | `` | `#ff7b7b` |
-|  weekendsDaysColor   |                   Weekends color                    |    `grey`     |               `#ffbaba`               |
+|      visible\*       |                Visibility of calendar                 |    `false`    |                `true`                 |
+|     dateRange\*      |          Array of starting and ending dates           |     `[]`      | `[new Date(), new Date("21/5/2019")]` |
+|    onDateClick\*     |                 On clicking any date                  |               |       `(minDate, maxDate)=>{}`        |
+|      baseColor       |                      Base color                       |   `#007bff`   |                 `red`                 |  | fontColor | Font Color | `` | `white` |
+| hoverBackgroundColor |                Hover background color                 |   `#007bff`   |                 `red`                 |  | hoverFontColor | Hover Font Color | `` | `white` |
+|    disabledColor     |                    Disabled color                     |   `#add8e6`   |               `#b9b9b9`               |  | weekDaysColor | Week Days Color | `` | `#ff7b7b` |
+|  weekendsDaysColor   |                    Weekends color                     |    `grey`     |               `#ffbaba`               |
 
 ## Types
 
@@ -97,13 +97,13 @@ Asterisk (\*) props are Required.
 
     #### Demo
 
-    ![](https://media.giphy.com/media/QXgd2n6ZOt6xvTeuJh/giphy.gif)
+    ![](https://media.giphy.com/media/dWei8AyrWphnKS5RwC/giphy.gif)
 
     #### Props
 
-    |   Prop name    |                       Description                        | Default Value | Example values |
-    | :------------: | :------------------------------------------------------: | :-----------: | :------------: |
-    |    steps\*     |                  Steps from start date                   |      `7`      |      `7`       |
+    |   Prop name    |              Description              | Default Value | Example values |
+    | :------------: | :-----------------------------------: | :-----------: | :------------: |
+    |    steps\*     |         Steps from start date         |      `7`      |      `7`       |
     | startWithDay\* | Starting day of nearest selected date |     `Wed`     |     `Wed`      |
 
 2.  ### free-range
@@ -125,8 +125,8 @@ Asterisk (\*) props are Required.
 
     #### Demo
 
-    ![](https://media.giphy.com/media/j2w0ENwMrjtwdsx4Du/giphy.gif)
-  
+    ![](https://media.giphy.com/media/IeLEjnwuzVR7yMVNac/giphy.gif)
+
 3.  ### single
 
     For single date select
@@ -146,7 +146,7 @@ Asterisk (\*) props are Required.
 
     #### Demo
 
-    ![](https://media.giphy.com/media/QYMYbEMXaukCROx7gQ/giphy.gif)
+    ![](https://media.giphy.com/media/RfBbDclOhU9FU3uAif/giphy.gif)
 
 ## Contributors ✨
 
@@ -160,6 +160,10 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/kashifsulaiman"><img src="https://avatars3.githubusercontent.com/u/11738465?s=460&v=4" width="100px;" alt="Mohammad Kashif Sulaiman"/><br /><sub><b>Mohammad Kashif Sulaiman</b></sub></a><br /> <a href="#" title="Code">💻</a></td>
   </tr>
 </table>
+
+## Pull Requests
+
+Feel free to make Pull Request for your feature/fix.
 
 ## License
 
