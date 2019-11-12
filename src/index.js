@@ -36,8 +36,12 @@ class Calendar extends Component {
       onDateClick
     } = this.props;
     let invalid = false;
-    if (!dateRange) {
+    if (!dateRange && dateRange.length === 0) {
       console.error(`Prop "dateRange" is Required`);
+      invalid = true;
+    }
+    if (type !== "single" && dateRange.length !== 2) {
+      console.error(`Prop "dateRange" is Invalid`);
       invalid = true;
     }
     if (visible === undefined) {
@@ -56,6 +60,7 @@ class Calendar extends Component {
       console.error(`Prop "onDateClick" is Required`);
       invalid = true;
     }
+
     this.setState({ invalid: invalid });
     if (invalid) {
       return false;
@@ -160,7 +165,7 @@ class Calendar extends Component {
         activeDate.clone().endOf("days")
       ];
       this.props.onDateClick(
-        activeDateIndex[0].clone()
+        activeDateIndex[0].clone().toDate()
         // activeDateIndex[1].clone()
       );
       this.setState({ activeDateIndex });
@@ -174,8 +179,8 @@ class Calendar extends Component {
           activeMouseEnter: false
         }));
         this.props.onDateClick(
-          activeDateArray[0].clone(),
-          activeDateArray[1].clone()
+          activeDateArray[0].clone().toDate(),
+          activeDateArray[1].clone().toDate()
         );
         // this.setState({ activeDateIndex });
       } else {
@@ -190,8 +195,8 @@ class Calendar extends Component {
           .clone()
       ];
       this.props.onDateClick(
-        activeDateIndex[0].clone(),
-        activeDateIndex[1].clone()
+        activeDateIndex[0].clone().toDate(),
+        activeDateIndex[1].clone().toDate()
       );
       this.setState({ activeDateIndex });
     }
