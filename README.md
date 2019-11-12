@@ -4,7 +4,7 @@
 
 [![NPM](https://img.shields.io/npm/v/react-range-calendar.svg)](https://www.npmjs.com/package/react-range-calendar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-### Demo & Features
+### Demo & Features [(click here)](https://expertizo.github.io/react-range-calendar/)
 
 <p align="center">
   <img src="https://media.giphy.com/media/KZvNr253b3D7F37zOd/giphy.gif">
