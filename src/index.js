@@ -36,8 +36,12 @@ class Calendar extends Component {
       onDateClick
     } = this.props;
     let invalid = false;
-    if (!dateRange) {
+    if (!dateRange && dateRange.length === 0) {
       console.error(`Prop "dateRange" is Required`);
+      invalid = true;
+    }
+    if (type !== "single" && dateRange.length !== 2) {
+      console.error(`Prop "dateRange" is Invalid`);
       invalid = true;
     }
     if (visible === undefined) {
@@ -56,6 +60,7 @@ class Calendar extends Component {
       console.error(`Prop "onDateClick" is Required`);
       invalid = true;
     }
+
     this.setState({ invalid: invalid });
     if (invalid) {
       return false;

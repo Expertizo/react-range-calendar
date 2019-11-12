@@ -24,7 +24,13 @@ export default class App extends Component {
     const startWithDay = "Wed";
     return (
       <div className="App">
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            flexWrap: "wrap"
+          }}
+        >
           <div>
             <button
               style={{ marginTop: 10, marginBottom: 10 }}
