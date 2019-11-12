@@ -104,7 +104,7 @@ Asterisk (\*) props are Required.
     |   Prop name    |                       Description                        | Default Value | Example values |
     | :------------: | :------------------------------------------------------: | :-----------: | :------------: |
     |    steps\*     |                  Steps from start date                   |      `7`      |      `7`       |
-    | startWithDay\* | Starting day of nearest selected day then it will update |     `Wed`     |     `Wed`      |
+    | startWithDay\* | Starting day of nearest selected date |     `Wed`     |     `Wed`      |
 
 2.  ### free-range
 
