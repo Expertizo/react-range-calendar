@@ -35,7 +35,7 @@ import Calendar from "react-range-calendar";
 export default class App extends Component {
   state = {
     visible: true,
-    dateRange: [new Date(), new Date("21/5/2019")]
+    dateRange: [new Date("11/10/2019"), new Date("11/18/2019")]
   };
 
   render() {
@@ -63,16 +63,16 @@ export default class App extends Component {
 
 Asterisk (\*) props are Required.
 
-|      Prop name       |                      Description                      | Default Value |            Example values             |
-| :------------------: | :---------------------------------------------------: | :-----------: | :-----------------------------------: |
-|        type\*        | Types of calendar `["free-range", "single", "range"]` |   `"range"`   |            `"free-range"`             |
-|      visible\*       |                Visibility of calendar                 |    `false`    |                `true`                 |
-|     dateRange\*      |          Array of starting and ending dates           |     `[]`      | `[new Date(), new Date("21/5/2019")]` |
-|    onDateClick\*     |                 On clicking any date                  |               |       `(minDate, maxDate)=>{}`        |
-|      baseColor       |                      Base color                       |   `#007bff`   |                 `red`                 |  | fontColor | Font Color | `` | `white` |
-| hoverBackgroundColor |                Hover background color                 |   `#007bff`   |                 `red`                 |  | hoverFontColor | Hover Font Color | `` | `white` |
-|    disabledColor     |                    Disabled color                     |   `#add8e6`   |               `#b9b9b9`               |  | weekDaysColor | Week Days Color | `` | `#ff7b7b` |
-|  weekendsDaysColor   |                    Weekends color                     |    `grey`     |               `#ffbaba`               |
+|      Prop name       |                      Description                      | Default Value |                   Example values                   |
+| :------------------: | :---------------------------------------------------: | :-----------: | :------------------------------------------------: |
+|        type\*        | Types of calendar `["free-range", "single", "range"]` |   `"range"`   |                   `"free-range"`                   |
+|      visible\*       |                Visibility of calendar                 |    `false`    |                       `true`                       |
+|     dateRange\*      |          Array of starting and ending dates           |     `[]`      | `[new Date("11/10/2019"), new Date("11/18/2019")]` |
+|    onDateClick\*     |                 On clicking any date                  |               |              `(minDate, maxDate)=>{}`              |
+|      baseColor       |                      Base color                       |   `#007bff`   |                       `red`                        |  | fontColor | Font Color | `` | `white` |
+| hoverBackgroundColor |                Hover background color                 |   `#007bff`   |                       `red`                        |  | hoverFontColor | Hover Font Color | `` | `white` |
+|    disabledColor     |                    Disabled color                     |   `#add8e6`   |                     `#b9b9b9`                      |  | weekDaysColor | Week Days Color | `` | `#ff7b7b` |
+|  weekendsDaysColor   |                    Weekends color                     |    `grey`     |                     `#ffbaba`                      |
 
 ## Types
 
