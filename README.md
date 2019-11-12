@@ -4,11 +4,15 @@
 
 [![NPM](https://img.shields.io/npm/v/react-range-calendar.svg)](https://www.npmjs.com/package/react-range-calendar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+### Demo & Features
+
+<p align="center">
+  <img width="460" height="300" src="https://media.giphy.com/media/U3VBtzauLwfaXrxmcb/giphy.gif">
+</p>
+
 |                           free-range                            |                              range                              |                             single                              |
 | :-------------------------------------------------------------: | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
 | ![](https://media.giphy.com/media/j2w0ENwMrjtwdsx4Du/giphy.gif) | ![](https://media.giphy.com/media/QXgd2n6ZOt6xvTeuJh/giphy.gif) | ![](https://media.giphy.com/media/QYMYbEMXaukCROx7gQ/giphy.gif) |
-
-![](https://media.giphy.com/media/U3VBtzauLwfaXrxmcb/giphy.gif)
 
 ## Install
 
