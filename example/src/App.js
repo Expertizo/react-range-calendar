@@ -22,7 +22,7 @@ export default class App extends Component {
             steps={steps}
             startWithDay={startWithDay}
             dateRange={dateRange}
-            onDayClick={(minDate, maxDate) => {
+            onDateClick={(minDate, maxDate) => {
               this.setState({ dateRange: [minDate, maxDate] });
             }}
             type="range"

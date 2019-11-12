@@ -33,7 +33,7 @@ class Calendar extends Component {
       only,
       type,
       visible,
-      onDayClick
+      onDateClick
     } = this.props;
     let invalid = false;
     if (!dateRange) {
@@ -52,8 +52,8 @@ class Calendar extends Component {
       console.error(`Prop "startWithDay" is Required`);
       invalid = true;
     }
-    if (!onDayClick) {
-      console.error(`Prop "onDayClick" is Required`);
+    if (!onDateClick) {
+      console.error(`Prop "onDateClick" is Required`);
       invalid = true;
     }
     this.setState({ invalid: invalid });
@@ -159,7 +159,7 @@ class Calendar extends Component {
         activeDate.clone().startOf("days"),
         activeDate.clone().endOf("days")
       ];
-      this.props.onDayClick(
+      this.props.onDateClick(
         activeDateIndex[0].clone()
         // activeDateIndex[1].clone()
       );
@@ -173,7 +173,7 @@ class Calendar extends Component {
           activeDateIndex: activeDateArray,
           activeMouseEnter: false
         }));
-        this.props.onDayClick(
+        this.props.onDateClick(
           activeDateArray[0].clone(),
           activeDateArray[1].clone()
         );
@@ -189,7 +189,7 @@ class Calendar extends Component {
           .add(steps, "day")
           .clone()
       ];
-      this.props.onDayClick(
+      this.props.onDateClick(
         activeDateIndex[0].clone(),
         activeDateIndex[1].clone()
       );
@@ -552,7 +552,7 @@ Calendar.propTypes = {
   startWithDay: PropTypes.string,
   dateRange: PropTypes.arrayOf(PropTypes.object),
   visible: PropTypes.bool,
-  onDayClick: PropTypes.func,
+  onDateClick: PropTypes.func,
   only: PropTypes.string,
   baseColor: PropTypes.string,
   fontColor: PropTypes.string,
