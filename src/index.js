@@ -160,7 +160,7 @@ class Calendar extends Component {
         activeDate.clone().endOf("days")
       ];
       this.props.onDateClick(
-        activeDateIndex[0].clone()
+        activeDateIndex[0].clone().toDate()
         // activeDateIndex[1].clone()
       );
       this.setState({ activeDateIndex });
@@ -174,8 +174,8 @@ class Calendar extends Component {
           activeMouseEnter: false
         }));
         this.props.onDateClick(
-          activeDateArray[0].clone(),
-          activeDateArray[1].clone()
+          activeDateArray[0].clone().toDate(),
+          activeDateArray[1].clone().toDate()
         );
         // this.setState({ activeDateIndex });
       } else {
@@ -190,8 +190,8 @@ class Calendar extends Component {
           .clone()
       ];
       this.props.onDateClick(
-        activeDateIndex[0].clone(),
-        activeDateIndex[1].clone()
+        activeDateIndex[0].clone().toDate(),
+        activeDateIndex[1].clone().toDate()
       );
       this.setState({ activeDateIndex });
     }
