@@ -5,12 +5,12 @@ import Calendar from "react-range-calendar";
 export default class App extends Component {
   state = {
     visible: true,
-    startWithDates: [new Date(), new Date("21/5/2019")]
+    dateRange: [new Date(), new Date("21/5/2019")]
   };
   render() {
-    const { visible, startWithDates } = this.state;
-    const step = 7;
-    const startWith = "Wed";
+    const { visible, dateRange } = this.state;
+    const steps = 7;
+    const startWithDay = "Wed";
     return (
       <div className="App">
         <button onClick={() => this.setState({ visible: !visible })}>
@@ -19,20 +19,13 @@ export default class App extends Component {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Calendar
             visible={visible}
-            step={step}
-            startWithDay={startWith}
-            dateRange={startWithDates}
+            steps={steps}
+            startWithDay={startWithDay}
+            dateRange={dateRange}
             onDayClick={(minDate, maxDate) => {
-              this.setState({ startWithDates: [minDate, maxDate] });
+              this.setState({ dateRange: [minDate, maxDate] });
             }}
-            // baseColor="red"
-            // fontColor="white"
-            // hoverBackgroundColor="red"
-            // hoverFontColor="white"
-            // disabledColor="#b9b9b9"
-            // weekDaysColor="#ff7b7b"
-            // weekendsDaysColor="#ffbaba"
-            type="free-range"
+            type="range"
           />
         </div>
       </div>

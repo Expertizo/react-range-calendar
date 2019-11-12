@@ -4,6 +4,10 @@
 
 [![NPM](https://img.shields.io/npm/v/react-range-calendar.svg)](https://www.npmjs.com/package/react-range-calendar) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+|                         Solarized dark                          | Solarized Ocean |      Solarized Ocean      |
+| :-------------------------------------------------------------: | :-------------: | :-----------------------: |
+| ![](https://media.giphy.com/media/j2w0ENwMrjtwdsx4Du/giphy.gif) |                 | ![](https://...Ocean.png) |
+
 ## Install
 
 ```bash
@@ -13,7 +17,7 @@ npm install --save react-range-calendar
 OR
 
 ```bash
-yarn add  react-range-calendar
+yarn add react-range-calendar
 ```
 
 ## Usage

@@ -11,7 +11,7 @@ class Calendar extends Component {
     super(props);
     this.state = {
       activeDateIndex: [moment(), moment().subtract(7, "days")],
-      step: 6,
+      steps: 6,
       year: 2019,
       month: 10,
       date: 29,
@@ -27,7 +27,7 @@ class Calendar extends Component {
   componentDidMount() {
     const {
       date,
-      step,
+      steps,
       startWithDay,
       dateRange,
       only,
@@ -44,8 +44,8 @@ class Calendar extends Component {
       console.error(`Prop "visible" is Required`);
       invalid = true;
     }
-    if (type === "range" && step === undefined) {
-      console.error(`Prop "step" is Required`);
+    if (type === "range" && steps === undefined) {
+      console.error(`Prop "steps" is Required`);
       invalid = true;
     }
     if (type === "range" && startWithDay === undefined) {
@@ -77,7 +77,7 @@ class Calendar extends Component {
       month,
       year,
       date: day,
-      step,
+      steps,
       startWith: startWithDay,
       activeDateIndex,
       activeView: only || "default"
@@ -86,7 +86,14 @@ class Calendar extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps !== this.props) {
-      const { visible, date, step, startWithDay, dateRange, type } = this.props;
+      const {
+        visible,
+        date,
+        steps,
+        startWithDay,
+        dateRange,
+        type
+      } = this.props;
       const dateInMoment = moment(dateRange[0]);
       const month = dateInMoment.format("YYYY-MMM"),
         year = dateInMoment.format("YYYY"),
@@ -104,7 +111,7 @@ class Calendar extends Component {
         month,
         year,
         date: day,
-        step,
+        steps,
         startWith: startWithDay,
         activeDateIndex
       });
@@ -115,7 +122,7 @@ class Calendar extends Component {
   }
 
   handelChangeSelectedDate = dateInMoment => {
-    const { step, month, year, startWith, fixRange } = this.state;
+    const { steps, month, year, startWith, fixRange } = this.state;
     const { type } = this.props;
     const activeDates = this.getMonths(month, year);
     let selectedDate;
@@ -179,7 +186,7 @@ class Calendar extends Component {
         activeDate.clone(),
         activeDate
           .clone()
-          .add(step, "day")
+          .add(steps, "day")
           .clone()
       ];
       this.props.onDayClick(
@@ -536,10 +543,10 @@ class Calendar extends Component {
 }
 Calendar.propTypes = {
   // date: PropTypes.object.isRequired,
-  // step: PropTypes.number.isRequired.ma,
-  step: (props, propName, componentName) => {
+  // steps: PropTypes.number.isRequired.ma,
+  steps: (props, propName, componentName) => {
     if (props[propName] < 0 || props[propName] > 30) {
-      return new Error("Max Step 30 is allowed");
+      return new Error("Max Steps 30 is allowed");
     }
   },
   startWithDay: PropTypes.string,
